@@ -6,9 +6,13 @@ Create a folder named assignment1 in your development environment.
 In the folder create a web page using PHP, HTML5 and CSS with the following:
 
 A variable containing your birth date and time.
+
 Display your birth date and time. Calculate and display how many years, months, days, hours and minutes since you were born.
+
 Calculate and display how many days until you have to retire. Use 67 years as the age to retire.
+
 Create an associative multi-dimensional array containing the courses (number and name) you have taken or are currently taking at Broward College. Use the semester as the key. E.g. 20171, 20172, 20173, 20181, 20182.
+
 Display the name and number of each course for each semester. E.g. CTS2857C Server-side Scripting.
 course = [
 	20163 ['COP1000C Intro Cmp Prg', 'COP1210C Programming1', 'CTS1111C Linux+', 'CIS1513C Project Mgmt'],

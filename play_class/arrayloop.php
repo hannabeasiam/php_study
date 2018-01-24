@@ -38,6 +38,10 @@
 	  foreach ($numbers as $random) {
 		echo $random . ' ';
 	  }
+	  $newRandom = array($numbers);
+	  echo '<pre>';
+	  print_r($newRandom);
+	  echo '</pre>';
 	?>
   </body>
 </html>

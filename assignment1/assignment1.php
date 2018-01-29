@@ -1,9 +1,9 @@
 <?php
 
 $name = 'hanna';
-
+date_default_timezone_set("America/New_York"); 
 //variable containing your birth date and time.
-$birth_ts = mktime(00, 00, 00, 11, 16, 1991); //690246000; 
+$birth_ts = mktime(02, 50, 00, 11, 16, 1991); //690246000; 
 
 //Display your birth date and time. Calculate and display how many years, months, days, hours and minutes since you were born.
 $birth_date = date('Y-m-d H:i', $birth_ts);
@@ -18,17 +18,23 @@ $dteEnd = new DateTime($today);
 $dteDiff = $dteEnd -> diff($dteStart);
 
 //Calculate and display how many days until you have to retire. Use 67 years as the age to retire.
-$retire_ts = mktime (00, 00, 00, 11, 16, 2059);
-$retire_date = date('Y-m-d H:i', $retire_ts);
-$retireAt = new DateTime($retire_date);
-$dteRetire = $retireAt -> diff($dteEnd);
-//Create an associative multi-dimensional array containing the courses (number and name)
+$retire_date = new DateTime();
+$retire_date-> setTime(00, 00, 00);
+$retire_date-> setDate(2059, 11, 16);
 
-//$strStart = '1991-11-16 12:00:00';
+$dteRetire = $retire_date -> diff($dteEnd);
+//Create an associative multi-dimensional array containing the courses (number and name)
+$course = array(
+	20163 => array('COP1000C Intro Cmp Prg', 'COP1210C Programming1', 'CTS1111C Linux+', 'CIS1513C Project Mgmt'),
+	20171 => array('CIS1000C Intro to Cs', 'COP2071C Db Program Sql', 'COP23337C Programming2', 'CTS1851C Web Authoring1'),
+	20173 => array('COP2361C Oo Analysis', 'CTS852C Client Script'),
+	20181 => array('CTS2857C Serv Side Script'),
+);
 
 
 
 ?>
+
 <!doctype html>
 <html>
   <head>
@@ -47,11 +53,25 @@ $dteRetire = $retireAt -> diff($dteEnd);
 	  echo '<br><br>';	  
 	  echo "Today's Date : " .$today;
 	  echo '<br><br>';
-	  echo $dteDiff -> format("I lived ::::::::: %Y Years ::::::: %m Months :::: %d Days :::: %H Hours ::::::: %I minutes");
-	  echo '<br><br>';
-	  echo $today;
+	  echo $dteDiff -> format("I lived,  %Y Years  %m Months  %d Days  %H Hours  %I minutes");
+		echo '<br><br>';
+		echo 'Retire at 67, : ' .$retire_date-> format('Y-m-d H:i');
+		echo '<br><br>';
 	  echo $dteRetire -> format("Untill I retire, %R %a Days left");
 	?>
+	</div>
+	<div>
+		<h2>Courses <?php echo $name ?> took</h2>
+		<?php
+		
+	  foreach ($course as $semester => $coursename) {
+			echo 'Semester Number: ' . $semester . ' - ';
+			foreach ($coursename as $classnumber) {
+				echo $classnumber . ' ; ';
+			}
+			echo '<br><br>';
+		}
+		?>
 	</div>
 
   </body>

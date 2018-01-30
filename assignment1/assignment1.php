@@ -35,44 +35,64 @@ $course = array(
 
 ?>
 
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <title>Server Side Scripting Assignment1</title>
-    <link href="assignment1.css" rel="stylesheet" type="text/css">
+    <link href="style.css" rel="stylesheet" type="text/css">
     <script src="assignment1.js"></script>
   </head>
   <body>
-  <h1>Welcome to Hanna's Profile</h1>
-	<div>
-	<?php
-	  echo 'Name : ' .$name;
-	  echo '<br><br>';
-	  echo 'Birth Day Date : ' .$birth_date;
-	  echo '<br><br>';	  
-	  echo "Today's Date : " .$today;
-	  echo '<br><br>';
-	  echo $dteDiff -> format("I lived,  %Y Years  %m Months  %d Days  %H Hours  %I minutes");
-		echo '<br><br>';
-		echo 'Retire at 67, : ' .$retire_date-> format('Y-m-d H:i');
-		echo '<br><br>';
-	  echo $dteRetire -> format("Untill I retire, %R %a Days left");
-	?>
-	</div>
-	<div>
-		<h2>Courses <?php echo $name ?> took</h2>
-		<?php
-		
-	  foreach ($course as $semester => $coursename) {
-			echo 'Semester Number: ' . $semester . ' - ';
-			foreach ($coursename as $classnumber) {
-				echo $classnumber . ' ; ';
+  <div class="wrap"><!--wrap header and main except footer-->
+	<!--main header layout-->
+	<header class="main-header">
+		<div class="container">
+			<h1>PHP</h1>
+			<h3 class="name"><a href="#">Assignment 1 </a></h3>
+			<ul class="main-nav">
+				<li><a href="#">Date</a></li>
+				<li><a href="#">Array</a></li>
+			</ul>
+		</div>
+	</header>
+    <!--main contents-->
+	<div class="container">
+		<div>
+		<h2>Welcome to Hanna's Profile</h2>
+			<?php
+				echo 'Name : ' .$name;
+				echo '<br><br>';
+				echo 'Birth Day Date : ' .$birth_date;
+				echo '<br><br>';	  
+				echo "Today's Date : " .$today;
+				echo '<br><br>';
+				echo $dteDiff -> format("I lived,  %Y Years  %m Months  %d Days  %H Hours  %I minutes");
+				echo '<br><br>';
+				echo 'Retire at 67, : ' .$retire_date-> format('Y-m-d H:i');
+				echo '<br><br>';
+				echo $dteRetire -> format("Untill I retire, %R %a Days left");
+			?>
+	  </div>
+
+		<div>
+			<h2>Courses <?php echo $name ?> took</h2>
+			<?php
+			
+			foreach ($course as $semester => $coursename) {
+				echo 'Semester Number: ' . $semester . ' - ';
+				foreach ($coursename as $classnumber) {
+					echo $classnumber . ' ; ';
+				}
+				echo '<br><br>';
 			}
-			echo '<br><br>';
-		}
-		?>
+			?>
+		</div>
 	</div>
+	</div> <!--end wrap div-->
+	<footer class="main-footer">
+		<span>&copy;2018 Hanna Lee</span>
+	</footer>
 
   </body>
 </html>

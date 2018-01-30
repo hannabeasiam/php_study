@@ -1,0 +1,75 @@
+
+* {
+  box-sizing: border-box;
+  margin:0;
+  padding:0;
+  border: 0;
+}
+.wrap {
+  min-height: calc(100vh - 88px); /*viewport height 100% - footer height 88px*/
+}
+/*div clas container, make layout more suitable*/
+.container {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+body {
+	line-height: 1.5;
+  color: #3a3a3a;
+  height: 100%;
+}
+.main-header {
+  background: #3acec2;
+  padding-bottom: 6px;
+}
+
+/*nav bar*/
+.name {
+  font-size: 1.25em;
+}
+.name, .main-nav li{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background: #fff;
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+.name a,
+.main-nav a {
+  padding: 10px 15px;
+  display: block;
+}
+.main-footer {
+  text-align: center;
+	padding: 2em 0;
+	background: #d9e4ea;
+}
+/*=======================================
+  Media Queries, mobile version
+=========================================*/
+/*width 769px or wider, mobile first approach, so only big web size adjust under media*/
+@media (min-width: 769px) {
+  .wrap {
+    min-height: calc(100vh - 88px); /*viewport height 100% - footer height 88px*/
+  }
+  .container {
+    width: 70%;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .name,
+  .main-nav,
+  .main-nav li {
+    display: inline-block;/* remove break between list item, display one line do not create line breaks*/
+  }
+  .name {
+    width: 240px;
+    margin-right: 100px; /*push margin to make spece with button menu*/
+  }
+  .main-nav li {
+    margin-right: 12px; /*-4px, negantive px will remove block space between list item 4px with 16px text*/
+  }
+
+}

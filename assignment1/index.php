@@ -1,5 +1,5 @@
 <?php
-$title = 'Assignment 1 : work with date and arrays';
+
 $name = 'Hanna';
 date_default_timezone_set("America/New_York"); 
 //variable containing your birth date and time.
@@ -31,29 +31,10 @@ $course = array(
 	20181 => array('CTS2857C Serv Side Script'),
 );
 ?>
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title><?php echo $title; ?></title>
-    <link href="style.css" rel="stylesheet" type="text/css">
-    <script src="assignment1.js"></script>
-  </head>
-  <body>
-  <div class="wrap"><!--wrap header and main except footer-->
-	<!--main header layout-->
-	<header class="main-header">
-		<div class="container">
-			<h1>PHP</h1>
-			<h3 class="name"><a href="#">Assignment 1 </a></h3>
-			<ul class="main-nav">
-				<li><a href="#date">Date</a></li>
-				<li><a href="#array">Array</a></li>
-			</ul>
-		</div>
-	</header>
-    <!--main contents-->
+<?php include("include/header.php");
+?>
+  
+	<!--main contents-->
 	<div class="container">
 		<div class="primary col" id="date">
 		<h2>Welcome to <?php echo $name ?> 's Profile</h2>
@@ -72,7 +53,7 @@ $course = array(
 			?>
 	  </div>
 
-		<div class="primary col" id="array">
+		<div class="second col" id="array">
 			<h2>Courses <?php echo $name ?> took</h2>
 			<?php
 			
@@ -88,10 +69,6 @@ $course = array(
 			?>
 		</div>
 	</div>
-	</div> <!--end wrap div-->
-	<footer class="main-footer">
-		<span>&copy;<?php echo date("Y"); ?> Hanna Lee</span>
-	</footer>
 
-  </body>
-</html>
+	<!--include footer-->
+	<?php include("include/footer.php"); ?>

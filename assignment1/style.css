@@ -1,12 +1,8 @@
-
 * {
   box-sizing: border-box;
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
   border: 0;
-}
-.wrap {
-  min-height: calc(100vh - 88px); /*viewport height 100% - footer height 88px*/
 }
 /*div clas container, make layout more suitable*/
 .container {
@@ -17,12 +13,16 @@
 body {
 	line-height: 1.5;
   color: #3a3a3a;
-  height: 100%;
+  height: 100vh;
+  max-height: 100vh;
   font-family: 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.wrap {
+  min-height: calc(100vh - 88px); /*viewport height 100% - footer height 88px*/
 }
 .main-header {
   background-color: #2e3438;
-  padding-bottom: 6px;
+
   color: rgba(191, 203, 206, 0.788);
 }
 
@@ -59,8 +59,8 @@ a:hover {
   } 
 a:active  {
   /* Applies to activated links */
-  font-weight:      bold;
-  background-color: black;
+  font-weight: bold;
+  background-color: rgba(68, 218, 101, 0.788);
   color: white;
   }
 /*=======================================
@@ -112,7 +112,8 @@ h2 {
 
     margin-right: -4px;  /*negative margin pull the columns towards each other, remove space*/
     vertical-align: top;
-    margin-top: 20px;
+    /*margin-top: 20px;*/
+    padding-top: 20px;
     padding-left: 1em;
     padding-right: 1em;
 

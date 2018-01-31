@@ -12,15 +12,18 @@
 .container {
   padding-left: 1em;
   padding-right: 1em;
+  font-weight: 500;
 }
 body {
 	line-height: 1.5;
   color: #3a3a3a;
   height: 100%;
+  font-family: 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 .main-header {
-  background: #3acec2;
+  background-color: #2e3438;
   padding-bottom: 6px;
+  color: rgba(191, 203, 206, 0.788);
 }
 
 /*nav bar*/
@@ -32,7 +35,7 @@ body {
   margin: 0;
   padding: 0;
   text-align: center;
-  background: #fff;
+  
   margin-top: 6px;
   margin-bottom: 6px;
 }
@@ -40,11 +43,41 @@ body {
 .main-nav a {
   padding: 10px 15px;
   display: block;
+  background-color:  rgba(191, 203, 206, 0.788);
+  border-radius: 2em;
+  text-decoration:  none;
+  font-weight:      bold;
+  color:  #2e3438;
+  transition-duration: .5s; 
 }
+a:hover {
+  /* Applies to links under the pointer */
+  font-weight:      bold;
+  background-color:  #fff;
+  color:           #2e3438;
+
+  } 
+a:active  {
+  /* Applies to activated links */
+  font-weight:      bold;
+  background-color: black;
+  color: white;
+  }
+/*=======================================
+  main 
+=========================================*/ 
+h2 {
+  color: rgba(68, 218, 101, 0.788);
+  margin: 1em 0;
+}
+
+
 .main-footer {
   text-align: center;
 	padding: 2em 0;
-	background: #d9e4ea;
+  background: #d9e4ea;
+  font-weight:      bold;
+  color: rgba(107, 133, 139, 0.788);
 }
 /*=======================================
   Media Queries, mobile version
@@ -71,5 +104,17 @@ body {
   .main-nav li {
     margin-right: 12px; /*-4px, negantive px will remove block space between list item 4px with 16px text*/
   }
+  
+  /*primary and secondary div block, only in web screen*/
+  .col {
+    display: inline-block;
+    width: 50%;
 
+    margin-right: -4px;  /*negative margin pull the columns towards each other, remove space*/
+    vertical-align: top;
+    margin-top: 20px;
+    padding-left: 1em;
+    padding-right: 1em;
+
+  }
 }

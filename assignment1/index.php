@@ -1,6 +1,6 @@
 <?php
-
-$name = 'hanna';
+$title = 'Assignment 1 : work with date and arrays';
+$name = 'Hanna';
 date_default_timezone_set("America/New_York"); 
 //variable containing your birth date and time.
 $birth_ts = mktime(02, 50, 00, 11, 16, 1991); //690246000; 
@@ -30,16 +30,13 @@ $course = array(
 	20173 => array('COP2361C Oo Analysis', 'CTS852C Client Script'),
 	20181 => array('CTS2857C Serv Side Script'),
 );
-
-
-
 ?>
 
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Server Side Scripting Assignment1</title>
+    <title><?php echo $title; ?></title>
     <link href="style.css" rel="stylesheet" type="text/css">
     <script src="assignment1.js"></script>
   </head>
@@ -51,47 +48,49 @@ $course = array(
 			<h1>PHP</h1>
 			<h3 class="name"><a href="#">Assignment 1 </a></h3>
 			<ul class="main-nav">
-				<li><a href="#">Date</a></li>
-				<li><a href="#">Array</a></li>
+				<li><a href="#date">Date</a></li>
+				<li><a href="#array">Array</a></li>
 			</ul>
 		</div>
 	</header>
     <!--main contents-->
 	<div class="container">
-		<div>
-		<h2>Welcome to Hanna's Profile</h2>
+		<div class="primary col" id="date">
+		<h2>Welcome to <?php echo $name ?> 's Profile</h2>
 			<?php
-				echo 'Name : ' .$name;
+				echo '<strong>Name : </strong>' .$name;
 				echo '<br><br>';
-				echo 'Birth Day Date : ' .$birth_date;
+				echo '<strong>Birth Day Date : </strong>' .$birth_date;
 				echo '<br><br>';	  
-				echo "Today's Date : " .$today;
+				echo "<strong>Today's Date : </strong>" .$today;
 				echo '<br><br>';
-				echo $dteDiff -> format("I lived,  %Y Years  %m Months  %d Days  %H Hours  %I minutes");
+				echo $dteDiff -> format("<strong>I lived, </strong>%Y Years  %m Months  %d Days  %H Hours  %I minutes");
 				echo '<br><br>';
-				echo 'Retire at 67, : ' .$retire_date-> format('Y-m-d H:i');
+				echo '<strong>Retire at 67olds : </strong>' .$retire_date-> format('Y-m-d H:i');
 				echo '<br><br>';
-				echo $dteRetire -> format("Untill I retire, %R %a Days left");
+				echo $dteRetire -> format("Untill I retire,<strong> %R %a Days </strong>left");
 			?>
 	  </div>
 
-		<div>
+		<div class="primary col" id="array">
 			<h2>Courses <?php echo $name ?> took</h2>
 			<?php
 			
-			foreach ($course as $semester => $coursename) {
-				echo 'Semester Number: ' . $semester . ' - ';
-				foreach ($coursename as $classnumber) {
-					echo $classnumber . ' ; ';
+
+			foreach ($course as $semester => $cours_detail) {
+				echo '<h3>Semester - ' .$semester .' : </h3>';
+				foreach ($cours_detail as $classname) {
+					echo $classname .'<br />';
 				}
-				echo '<br><br>';
+				echo '<br />';
 			}
+			
 			?>
 		</div>
 	</div>
 	</div> <!--end wrap div-->
 	<footer class="main-footer">
-		<span>&copy;2018 Hanna Lee</span>
+		<span>&copy;<?php echo date("Y"); ?> Hanna Lee</span>
 	</footer>
 
   </body>

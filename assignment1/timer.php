@@ -6,6 +6,10 @@ include("include/header.php");
 <div class="container">
 <div class="col"><!--if i remove col, not fit with full screen size. why?-->
   <h2>Timer</h2>
+  <?php
+
+  
+  ?>
 </div>
 </div><!--end main contents-->
 <!--footer-->

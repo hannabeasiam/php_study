@@ -1,9 +1,12 @@
-
+<?php ?>
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
-    <title><?php echo $title;?></title>
+		<meta name="description" content="Server Side Scripting">
+		<meta name="keywords" content="PHP, Date, Array">
+		<meta name="author" content="Hanna Lee">
+    <title><?php $title = 'Assignment1'; echo $title; ?></title>
     <link href="style.css" rel="stylesheet" type="text/css">
     <script src="assignment1.js"></script>
   </head>

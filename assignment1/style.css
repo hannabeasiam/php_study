@@ -80,6 +80,27 @@ h2 {
   color: rgba(107, 133, 139, 0.788);
 }
 /*=======================================
+  couse page 
+=========================================*/
+.coursePage{
+  background-color: rgba(216, 187, 171, 0.788);
+  
+}
+form {
+  margin: 0;
+}
+
+/*
+* Define consistent border, margin, and padding.
+*/
+
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/*=======================================
   Media Queries, mobile version
 =========================================*/
 /*width 769px or wider, mobile first approach, so only big web size adjust under media*/

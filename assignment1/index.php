@@ -43,8 +43,6 @@ $course = array(
 		<div class="primary col" id="date">
 		<h2>Welcome to <?php echo $name ?> 's Profile</h2>
 		<!-- #########################################################
-		###############################################################-->
-				<!-- #########################################################
 				question: what will be the better way to display php in html.
 				php in HTML or HTML in php. 
 		###############################################################-->
@@ -63,7 +61,7 @@ $course = array(
 				echo $dteRetire -> format("Untill I retire,<strong> %R %a Days </strong>left");
 			?>
 	  </div>
-
+		
 		<div class="second col" id="array">
 			<h2>Courses <?php echo $name ?> took</h2>
 			<?php

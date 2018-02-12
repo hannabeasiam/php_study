@@ -3,9 +3,9 @@
 if ($_SERVER["REQUEST_METHOD"] == 'POST') {
   //var_dump($_POST);//array(3) { ["name"]=> string(0) "" ["email"]=> string(0) "" ["details"]=> string(0) "" }
   $name = trim(filter_input(INPUT_POST, "name", FILTER_SANITZE_STRING));
-  //$name = trim($_POST['name']);
-  $email = trim(filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL));
-  $details = trim(filter_input(INPUT_POST, "details", FILTER_SANITIZE_SPECIAL_CHARS));
+  //$name = trim($_POST['name']);S
+  //$email = trim(filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL));
+  //$details = trim(filter_input(INPUT_POST, "details", FILTER_SANITIZE_SPECIAL_CHARS));
 
   if ($name == "" || $email =="" || $details =="") {
     echo "Please fill in the required section Name, Email, Details";

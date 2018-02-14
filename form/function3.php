@@ -24,6 +24,13 @@ function array_analyze($array, &$sum, &$prod, &$avg) {
     .'</pre>'
   ?>
 
+<!--
+function5, 
 
+
+
+
+
+-->
   </body>
 </html>

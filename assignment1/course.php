@@ -2,17 +2,10 @@
 //Learn about _SERVER
 if ($_SERVER["REQUEST_METHOD"] == 'POST') {
   //var_dump($_POST);//array(3) { ["name"]=> string(0) "" ["email"]=> string(0) "" ["details"]=> string(0) "" }
-<<<<<<< HEAD
   $name = trim(filter_input(INPUT_POST, "name"));
   //$name = trim($_POST['name']);
   $email = trim(filter_input(INPUT_POST, "email"));
   $details = trim(filter_input(INPUT_POST, "details"));
-=======
-  $name = trim(filter_input(INPUT_POST, "name", FILTER_SANITZE_STRING));
-  //$name = trim($_POST['name']);S
-  //$email = trim(filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL));
-  //$details = trim(filter_input(INPUT_POST, "details", FILTER_SANITIZE_SPECIAL_CHARS));
->>>>>>> test
 
   if ($name == "" || $email =="" || $details =="") {
     echo "Please fill in the required section Name, Email, Details";
@@ -60,7 +53,7 @@ include("include/header.php");
       </tr>
       <tr>
         <th><label for="details">Suggest Item Details</label></th>
-        <td><input type="textarea" id="details" name="details"/></td>
+        <td><textarea id="details" name="details">Your suggestion</textarea></td>
       </tr>
     </table>
     

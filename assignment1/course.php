@@ -7,43 +7,6 @@ if ($_SERVER["REQUEST_METHOD"] != 'POST') {
   $organization = '';
 }
 
-if ($_SERVER["REQUEST_METHOD"] == 'POST') {//open if statement store all post into array
-  //var_dump($_POST);//array(3) { ["name"]=> string(0) "" ["email"]=> string(0) "" ["details"]=> string(0) "" }
-  $name = trim(filter_input(INPUT_POST, "name"));
-  //$name = trim($_POST['name']);
-  $email = trim(filter_input(INPUT_POST, "email"));
-  $details = trim(filter_input(INPUT_POST, "details"));
-  $organization = trim(filter_input(INPUT_POST, "organization"));
-  $validated = true;
-  if ($name == "" || $email =="" || $details =="" || $organization =="") {
-    $error_message = "Please fill in the required section Name, Email, Details";
-    $validated = false;
-  }
-  //list validator store error message here  
-  if (!isset($error_message) && strlen($name) < 3) { //only check if input field not empty
-    $name_error = 'Name mush be at least 3 characters long.';
-    $validated = false;
-  }
-  if($validated != false){
-    header("location:course.php?status=thanks");
-    include("course.php");
-    echo "<pre>";
-    $email_body = "";
-    $email_body .= "Name " .$name ."\n"; //view source will have line break not broswer
-    $email_body .= "Email " .$email ."\n";
-    $email_body .= "Details " .$details ."\n";
-    $email_body .= "Organization " .$organization ."\n";      
-    echo $email_body;
-    echo "</pre>";
-    exit;
-
-  } 
-
-
-  //To Do: Send email
-  // header("location:course.php?status=thanks");
-} //opented post cloase here
-
 $title = "Learn php Arrays function display Courses";
 include("include/header.php"); 
 ?>
@@ -54,19 +17,16 @@ include("include/header.php");
   
   <?php 
 
-    if(isset($_GET['status']) && $_GET['status'] == 'thanks') {
-      echo "<p>Thanks for the email I&rsquo;ll check out your suggestion shortly!</p>";
-      include_once("location:course.php?status=thanks");
-    } 
-
-    else {
+    if ($_SERVER["REQUEST_METHOD"] == 'POST') {
+      include_once("process.php");
       if (isset($error_message)) {
         echo $error_message;
       }
-      else {
-        echo '<p>If you think there is somthing I&rsquo;m missing, let me know!
-        Complete the form to send me an email.</p>';
-      }
+    } 
+    else {
+      echo '<p>If you think there is somthing I&rsquo;m missing, let me know!
+      Complete the form to send me an email.</p>';
+      
     //else tag is opened 
   ?>
   <!--don't want to submit with get method, since it's really easy to modify

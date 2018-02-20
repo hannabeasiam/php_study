@@ -25,8 +25,6 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {//open if statement store all post in
     $validated = false;
   }
   if($validated != false){
-    header("location:course.php?status=thanks");
-    include("course.php");
     echo "<pre>";
     $email_body = "";
     $email_body .= "Name " .$name ."\n"; //view source will have line break not broswer
@@ -35,6 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {//open if statement store all post in
     $email_body .= "Organization " .$organization ."\n";      
     echo $email_body;
     echo "</pre>";
+    header("location:course.php?status=thanks");
     exit;
 
   } 
@@ -56,7 +55,7 @@ include("include/header.php");
 
     if(isset($_GET['status']) && $_GET['status'] == 'thanks') {
       echo "<p>Thanks for the email I&rsquo;ll check out your suggestion shortly!</p>";
-      include_once("location:course.php?status=thanks");
+      
     } 
 
     else {
@@ -72,7 +71,7 @@ include("include/header.php");
   <!--don't want to submit with get method, since it's really easy to modify
   query string data rather use POST-->
   
-  <form method="POST" action="course.php">
+  <form method="POST" action="course.php" novalidate>
     <table>
       <tr>
         <!--label works with id attribute-->

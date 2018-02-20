@@ -19,7 +19,7 @@
 				<h3 class="name"><a href="index.php">Assignment 1 </a></h3>
 				<ul class="main-nav">
 					<li><a href="timer.php">Date</a></li>
-					<li><a href="course.php">Assignment2</a></li>
+					<li><a href="assignment2.php">Assignment2</a></li>
 				</ul>
 			</div>
 		</header>

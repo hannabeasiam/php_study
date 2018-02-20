@@ -13,7 +13,8 @@
       $validated = false;
     }
     //list validator store error message here  
-    if (!isset($error_message) && strlen($name) < 3) { //only check if input field not empty
+    //if (!isset($error_message) && strlen($name) < 3) { //only check if input field not empty
+    if (strlen($name) < 3) {   
       $name_error = 'Name mush be at least 3 characters long.';
       $validated = false;
     }
@@ -27,12 +28,8 @@
       echo "<p>Thanks for the email I&rsquo;ll check out your suggestion shortly!</p>";
       echo "<pre>";
       echo $email_body;
-      echo "</pre>";      
-     
+      echo "</pre>";           
     } 
-
-
-
   } 
 
 ?>

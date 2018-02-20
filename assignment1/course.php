@@ -1,5 +1,5 @@
 <?php 
-//Learn about _SERVER
+//If it's not first time, assign variable
 if ($_SERVER["REQUEST_METHOD"] != 'POST') {
   $name = '';
   $email = '';
@@ -32,7 +32,7 @@ include("include/header.php");
   <!--don't want to submit with get method, since it's really easy to modify
   query string data rather use POST-->
   
-  <form method="POST" action="course.php">
+  <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" novalidate>
     <table>
       <tr>
         <!--label works with id attribute-->
@@ -52,10 +52,10 @@ include("include/header.php");
         <td>
           <select name="organization" id="organization" size="1">
             <option value="">Choose option..</option>
-            <option value="school" <?php if ($organization == "school"){ echo "selected";} ?> >School</option>
-            <option value="non-profit" <?php if ($organization == "non-profit"){ echo "selected";} ?> >Non-Profit</option>
-            <option value="profit" <?php if ($organization == "profit") {echo "selected";} ?> >Profit</option>
-            <option value="indivisual" <?php if ($organization == "indivisual") {echo "selected";} ?> >Indivisual</option>
+            <option value="school" <?php if ((isset($organization)) $organization == "school"){ echo "selected";} ?> >School</option>
+            <option value="non-profit" <?php if ((isset($organization)) $organization == "non-profit"){ echo "selected";} ?> >Non-Profit</option>
+            <option value="profit" <?php if ((isset($organization)) && $organization == "profit") {echo "selected";} ?> >Profit</option>
+            <option value="indivisual" <?php if ((isset($organization)) && $organization == "indivisual") {echo "selected";} ?> >Indivisual</option>
           </select>
         </td>
       </tr>

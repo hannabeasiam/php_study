@@ -45,9 +45,8 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {//open if statement store all post in
   //multiple select from list box, validate and store value in array skills
   if(isset($skills)) {
     $selectedSkill = $_POST['skills'];
-    $selectedSkill = array_filter($selectedSkill); //remove empty array 'choose option' with empty value
+    //$selectedSkill = array_filter($selectedSkill); //remove empty array 'choose option' with empty value
     foreach ($selectedSkill as $key => $value) {
-      $selected='selected';
       $skillList ='';
       $skillList .= $key. ' = ' .$value.'<br />';
     }
@@ -78,13 +77,14 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {//open if statement store all post in
   //checkbox
   if(isset($time)) {
     $timeList = $_POST['time'];
+    //$timeList = array($timeList);
     foreach($timeList as $timeKey => $timeValue) {
       $setTime = '';
       $setTime .= $timeKey .' = ' .$timeValue .'<br />';
     }
-    //echo '<pre>';
-    //var_dump($timeList);
-    //echo '</pre>';
+    echo '<pre>';
+    var_dump($timeList);
+    echo '</pre>';
   } else {
     $timeError = 'You must choose at least one';
     $validated = false;
@@ -152,13 +152,13 @@ include("include/header.php");
         <td>
           <select name="skills[]" id="skills" size="5" multiple>
             <option value="" <?php if ($firstTime || empty($selectedSkill)) echo 'selected'; ?>>Choose option..</option>
-            <option value="HTML" <?php  if (in_array("HTML",$selectedSkill )) echo 'selected'; ?> >HTML</option>
-            <option value="CSS" <?php if (in_array( "CSS",$selectedSkill)) echo 'selected'; ?>>CSS</option>
-            <option value="AWS" <?php if (in_array( "AWS",$selectedSkill)) echo 'selected'; ?>>AWS</option>
-            <option value="Javascript" <?php if (in_array( "Javascript",$selectedSkill)) echo 'selected'; ?>>Javascript</option>
-            <option value="Java" <?php if (in_array( "Java",$selectedSkill)) echo 'selected'; ?>>Java</option>
-            <option value="Python" <?php if (in_array( "Python",$selectedSkill)) echo 'selected'; ?>>Python</option>
-            <option value="PHP" <?php if (in_array( "PHP",$selectedSkill)) echo 'selected'; ?>>PHP</option>
+            <option value="HTML" <?php  if ((isset($selectedSkill)) && in_array("HTML",$selectedSkill )) echo 'selected'; ?> >HTML</option>
+            <option value="CSS" <?php if ((isset($selectedSkill)) && in_array( "CSS",$selectedSkill)) echo 'selected'; ?>>CSS</option>
+            <option value="AWS" <?php if ((isset($selectedSkill)) && in_array( "AWS",$selectedSkill)) echo 'selected'; ?>>AWS</option>
+            <option value="Javascript" <?php if ((isset($selectedSkill)) && in_array( "Javascript",$selectedSkill)) echo 'selected'; ?>>Javascript</option>
+            <option value="Java" <?php if ((isset($selectedSkill)) && in_array( "Java",$selectedSkill)) echo 'selected'; ?>>Java</option>
+            <option value="Python" <?php if ((isset($selectedSkill)) && in_array( "Python",$selectedSkill)) echo 'selected'; ?>>Python</option>
+            <option value="PHP" <?php if ((isset($selectedSkill)) && in_array( "PHP",$selectedSkill)) echo 'selected'; ?>>PHP</option>
           </select>
         </td>
         <td><span class="error"><?php if (isset($skillsError)) echo $skillsError; ?></span></td>
@@ -194,11 +194,11 @@ include("include/header.php");
       <tr>
         <th><label>time</label></th>
         <td>
-          <input type="checkbox" name="time[]" value="13-14" <?php if (in_array("13-14",$timeList )) { echo 'checked';}?>/> 1 ~ 2 pm<br/>
-          <input type="checkbox" name="time[]" value="14-15" <?php if (isset($timeList) && $timeValue == "14-15"){ echo 'checked';}?>/> 2 ~ 3 pm<br/>
-          <input type="checkbox" name="time[]" value="15-16"/> 3 ~ 4 pm<br/>
-          <input type="checkbox" name="time[]" value="16-17"/> 4 ~ 5 pm<br/>
-          <input type="checkbox" name="time[]" value="17-18"/> 5 ~ 6 pm<br/>
+          <input type="checkbox" name="time[]" value="13-14" <?php if ((isset($timeList)) && in_array("13-14",$timeList )) { echo 'checked';} ?>/> 1 ~ 2 pm<br/>
+          <input type="checkbox" name="time[]" value="14-15" <?php if (isset($timeList) && in_array("14-15",$timeList )){ echo 'checked';} ?>/> 2 ~ 3 pm<br/>
+          <input type="checkbox" name="time[]" value="15-16" <?php if (isset($timeList) && in_array("15-16",$timeList )){ echo 'checked';} ?>/> 3 ~ 4 pm<br/>
+          <input type="checkbox" name="time[]" value="16-17" <?php if (isset($timeList) && in_array("16-17",$timeList )){ echo 'checked';} ?>/> 4 ~ 5 pm<br/>
+          <input type="checkbox" name="time[]" value="17-18" <?php if (isset($timeList) && in_array("17-18",$timeList )){ echo 'checked';} ?>/> 5 ~ 6 pm<br/>
         </td>
         <td><span class="error"><?php if (isset($timeError)) echo $timeError; ?></span></td>
       </tr>
@@ -214,11 +214,12 @@ include("include/header.php");
       $userInput = '';
       $userInput .= 'Group Name : ' .$groupName .'<br />';
       $userInput .= 'Subject : ' .$subject .'<br />';
-      $userInput .= 'Skills & Interest : ' .$skillList .'<br />';
+      if ($selectedSkill[0] == '') {array_shift($selectedSkill);}
+      $userInput .= 'Skills & Interest : ' .implode(' ,',$selectedSkill) .'<br />';
       $userInput .= 'Location : ' .$location .'<br />';
       $userInput .= 'Organization : ' .$organization .'<br />';
       $userInput .= 'Description : ' .$detail .'<br />';
-      $userInput .= 'Time : ' .$setTime .'<br />';
+      $userInput .= 'Time : ' .implode(' ,',$timeList).'<br />';
       echo $userInput;
     }
     

@@ -80,8 +80,11 @@ h2 {
   color: rgba(107, 133, 139, 0.788);
 }
 /*=======================================
-  couse page 
+  form page
 =========================================*/
+.error {
+  color: red;
+}
 .coursePage{
   background-color: rgba(216, 187, 171, 0.788);
   

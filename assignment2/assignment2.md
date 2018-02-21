@@ -33,7 +33,7 @@ if not first time
       set input error message
     
 
-if is not first time or not valid data
+if is first time or not valid data
   display form
   loop general error message validated array, 
   check if input error message setted, 

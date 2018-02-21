@@ -51,9 +51,9 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {//open if statement store all post in
       $skillList ='';
       $skillList .= $key. ' = ' .$value.'<br />';
     }
-    echo '<pre>';
-    var_dump($selectedSkill);
-    echo '</pre>';
+    //echo '<pre>';
+    //var_dump($selectedSkill);
+    //echo '</pre>';
   }
   if (empty($selectedSkill)) {
     $validated = false;
@@ -70,6 +70,11 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {//open if statement store all post in
     $organizationError = 'Organization is require';
 
   }
+  //text area validate
+  if (empty($detail)) {
+    $validated = false;
+    $detailError = 'This field is require';
+  }
   //checkbox
   if(isset($time)) {
     $timeList = $_POST['time'];
@@ -77,9 +82,9 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {//open if statement store all post in
       $setTime = '';
       $setTime .= $timeKey .' = ' .$timeValue .'<br />';
     }
-    echo '<pre>';
-    var_dump($timeList);
-    echo '</pre>';
+    //echo '<pre>';
+    //var_dump($timeList);
+    //echo '</pre>';
   } else {
     $timeError = 'You must choose at least one';
     $validated = false;
@@ -182,7 +187,8 @@ include("include/header.php");
       <!--text area : Detail-->
       <tr>
         <th><label for="detail">Description</label></th>
-        <td><textarea id="detail" name="detail">Describe Detail<?php echo $detail; ?></textarea></td>
+        <td><textarea id="detail" name="detail" placeholder="Describe event"><?php if(isset($detail)) echo $detail; ?></textarea></td>
+        <td><span class="error"><?php if (isset($detailError)) echo $detailError; ?></span></td>
       </tr>
       <!--set of checkbox : time-->
       <tr>
@@ -205,7 +211,15 @@ include("include/header.php");
     } //close else block
     else {
       //display result
-      echo 'Group Name : ' .$groupName;
+      $userInput = '';
+      $userInput .= 'Group Name : ' .$groupName .'<br />';
+      $userInput .= 'Subject : ' .$subject .'<br />';
+      $userInput .= 'Skills & Interest : ' .$skillList .'<br />';
+      $userInput .= 'Location : ' .$location .'<br />';
+      $userInput .= 'Organization : ' .$organization .'<br />';
+      $userInput .= 'Description : ' .$detail .'<br />';
+      $userInput .= 'Time : ' .$setTime .'<br />';
+      echo $userInput;
     }
     
     ?>

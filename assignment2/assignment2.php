@@ -13,7 +13,7 @@
   $detail = '';
   $time = '';
   $firstTime = $_SERVER["REQUEST_METHOD"] != 'POST';
-  
+ 
 
 if ($_SERVER["REQUEST_METHOD"] == 'POST') {//open if statement store all post into array
   $groupName = trim(filter_input(INPUT_POST, "groupName"));
@@ -51,7 +51,9 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {//open if statement store all post in
       $skillList ='';
       $skillList .= $key. ' = ' .$value.'<br />';
     }
+    echo '<pre>';
     var_dump($selectedSkill);
+    echo '</pre>';
   }
   if (empty($selectedSkill)) {
     $validated = false;
@@ -67,6 +69,20 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {//open if statement store all post in
     $validated = false;
     $organizationError = 'Organization is require';
 
+  }
+  //checkbox
+  if(isset($time)) {
+    $timeList = $_POST['time'];
+    foreach($timeList as $timeKey => $timeValue) {
+      $setTime = '';
+      $setTime .= $timeKey .' = ' .$timeValue .'<br />';
+    }
+    echo '<pre>';
+    var_dump($timeList);
+    echo '</pre>';
+  } else {
+    $timeError = 'You must choose at least one';
+    $validated = false;
   }
 
 
@@ -172,12 +188,13 @@ include("include/header.php");
       <tr>
         <th><label>time</label></th>
         <td>
-          <input type="checkbox" name="time[]" value="13-14"/> 1 ~ 2 pm<br/>
-          <input type="checkbox" name="time[]" value="14-15"/> 2 ~ 3 pm<br/>
+          <input type="checkbox" name="time[]" value="13-14" <?php if (isset($timeList) && $timeValue == "13-14"){ echo 'checked';}?>/> 1 ~ 2 pm<br/>
+          <input type="checkbox" name="time[]" value="14-15" <?php if (isset($timeList) && $timeValue == "14-15"){ echo 'checked';}?>/> 2 ~ 3 pm<br/>
           <input type="checkbox" name="time[]" value="15-16"/> 3 ~ 4 pm<br/>
           <input type="checkbox" name="time[]" value="16-17"/> 4 ~ 5 pm<br/>
           <input type="checkbox" name="time[]" value="17-18"/> 5 ~ 6 pm<br/>
         </td>
+        <td><span class="error"><?php if (isset($timeError)) echo $timeError; ?></span></td>
       </tr>
     </table>
     

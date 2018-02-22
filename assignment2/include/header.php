@@ -6,7 +6,7 @@
 		<meta name="description" content="Server Side Scripting">
 		<meta name="keywords" content="PHP, Date, Array">
 		<meta name="author" content="Hanna Lee">
-    <title><?php $title = 'Assignment1'; echo $title; ?></title>
+    <title><?php $title = 'HannaLee Assignment'; echo $title; ?></title>
     <link href="style.css" rel="stylesheet" type="text/css">
     <script src="assignment1.js"></script>
   </head>
@@ -16,9 +16,9 @@
 		<header class="main-header">
 			<div class="container">
 				<h1>PHP</h1>
-				<h3 class="name"><a href="index.php">Assignment 1 </a></h3>
+				<h3 class="name"><a href="index.php">Home </a></h3>
 				<ul class="main-nav">
-					<li><a href="timer.php">Date</a></li>
+					<li><a href="assignment1.php">Assignment1</a></li>
 					<li><a href="assignment2.php">Assignment2</a></li>
 				</ul>
 			</div>

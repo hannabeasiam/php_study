@@ -25,11 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {//open if statement store all post in
   $time = filter_input(INPUT_POST, "time");
   $validated = true;
   $fieldError = array();
-  /*
-  check invalid data
-  if input is invalid
-    set validated[array] to false
-    set input error message*/
+
 /**********************************************************
  * check invalid data
  * 
@@ -47,12 +43,15 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {//open if statement store all post in
     $selectedSkill = $_POST['skills'];
     //$selectedSkill = array_filter($selectedSkill); //remove empty array 'choose option' with empty value
     foreach ($selectedSkill as $key => $value) {
+      if ($selectedSkill[0] == '') {array_shift($selectedSkill);}
       $skillList ='';
       $skillList .= $key. ' = ' .$value.'<br />';
     }
+     /* test array
     echo '<pre>';
     var_dump($selectedSkill);
     echo '</pre>';
+    */
   }
   if (empty($selectedSkill)) {
     $validated = false;
@@ -77,28 +76,29 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {//open if statement store all post in
   //checkbox
   if(isset($time)) {
     $timeList = $_POST['time'];
-    //$timeList = array($timeList);
     foreach($timeList as $timeKey => $timeValue) {
       $setTime = '';
       $setTime .= $timeKey .' = ' .$timeValue .'<br />';
     }
+    /* test array
     echo '<pre>';
     var_dump($timeList);
     echo '</pre>';
+    */
   } else {
     $timeError = 'You must choose at least one';
     $validated = false;
   }
 
 
-} //opented post cloase here
+} //opened post cloase here
 
 $title = "Learn php Arrays function display Courses";
 include("include/header.php"); 
 ?>
 <!--main contents-->
 <div class="coursePage container">
-<div class="col"><!--if i remove col, not fit with full screen size. why?-->
+<!--<div class="col">if i remove col, not fit with full screen size. why?-->
   <h2>Course List</h2>
   
   <?php 
@@ -119,8 +119,7 @@ include("include/header.php");
       echo $error_message;
     }
     else {
-      echo '<p>If you think there is somthing I&rsquo;m missing, let me know!
-      Complete the form to send me an email.</p>';
+      echo '<h3>Tell me about your event!</h3>';
     }
     //else tag is opened 
   ?>
@@ -148,7 +147,7 @@ include("include/header.php");
       </tr>
       <!--multible-select list box: skills & interest (HTML, CSS, AWS, Javascript, Java, Python, PHP)-->
       <tr>
-        <th><label for="skills">Skills & Interest</label></th>
+        <th><label for="skills">Skills  &amp; Interest</label></th>
         <td>
           <select name="skills[]" id="skills" size="5" multiple>
             <option value="" <?php if ($firstTime || empty($selectedSkill)) echo 'selected'; ?>>Choose option..</option>
@@ -211,10 +210,11 @@ include("include/header.php");
     } //close else block
     else {
       //display result
+      echo "<h3>Thanks for your submission!</h3>";
       $userInput = '';
       $userInput .= 'Group Name : ' .$groupName .'<br />';
       $userInput .= 'Subject : ' .$subject .'<br />';
-      if ($selectedSkill[0] == '') {array_shift($selectedSkill);}
+      //if ($selectedSkill[0] == '') {array_shift($selectedSkill);}  operate under getarray part, empty string does not stored in array anymore
       $userInput .= 'Skills & Interest : ' .implode(' ,',$selectedSkill) .'<br />';
       $userInput .= 'Location : ' .$location .'<br />';
       $userInput .= 'Organization : ' .$organization .'<br />';
@@ -225,7 +225,7 @@ include("include/header.php");
     
     ?>
   
-</div>
+
 </div><!--end main contents-->
 <!--footer-->
 <?php include("include/footer.php"); ?>

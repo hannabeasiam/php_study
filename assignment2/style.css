@@ -83,7 +83,8 @@ h2 {
   form page
 =========================================*/
 .error {
-  color: red;
+  color: rgb(236, 114, 114);
+  margin-left: 3em;
 }
 .coursePage{
   background-color: rgba(216, 187, 171, 0.788);
@@ -92,7 +93,22 @@ h2 {
 form {
   margin: 0;
 }
-
+th, label {
+  text-align: left;
+  margin-right: 2em;
+}
+td {
+  padding-bottom: 0.5em;
+}
+input[type=submit] {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  margin: 1em;
+  cursor: pointer;
+}
 /*
 * Define consistent border, margin, and padding.
 */
@@ -112,7 +128,7 @@ fieldset {
     min-height: calc(100vh - 88px); /*viewport height 100% - footer height 88px*/
   }
   .container {
-    width: 70%;
+    width: 80%;
     max-width: 1000px;
     margin: 0 auto;
   }

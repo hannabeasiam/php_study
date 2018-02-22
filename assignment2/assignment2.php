@@ -13,7 +13,7 @@
   $detail = '';
   $time = '';
   $firstTime = $_SERVER["REQUEST_METHOD"] != 'POST';
- 
+  $validated = true;
 
 if ($_SERVER["REQUEST_METHOD"] == 'POST') {//open if statement store all post into array
   $groupName = trim(filter_input(INPUT_POST, "groupName"));
@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {//open if statement store all post in
   $organization = filter_input(INPUT_POST, "organization");
   $detail = trim(filter_input(INPUT_POST, "detail"));
   $time = filter_input(INPUT_POST, "time");
-  $validated = true;
+  
   $fieldError = array();
 
 /**********************************************************
@@ -115,8 +115,8 @@ include("include/header.php");
 
 
   if (($_SERVER["REQUEST_METHOD"] != 'POST') || $validated == false) { //start form block
-    if (isset($error_message)) {
-      echo $error_message;
+    if ($validated == false) {
+      echo '<h3>Please Enter require field!</h3>';
     }
     else {
       echo '<h3>Tell me about your event!</h3>';

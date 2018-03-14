@@ -19,6 +19,8 @@
     curl_setopt($curl,CURLOPT_RETURNTRANSFER, true);
     $page = curl_exec($curl); //actually make that curl
     curl_close($curl); //cloase curl
+    //process data
+    $page = nl2br(htmlspecialchars($page));
     echo $page;
     echo '<br>';
     echo '<br>';
